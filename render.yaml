@@ -28,15 +28,23 @@ services:
         protocol: http
     healthCheckPath: /actuator/health
     envVars:
-      - key: DATABASE_URL
+      - key: PGHOST
         fromDatabase:
           name: cafe-db
-          property: connectionString
-      - key: DB_USER
+          property: host
+      - key: PGPORT
+        fromDatabase:
+          name: cafe-db
+          property: port
+      - key: PGDATABASE
+        fromDatabase:
+          name: cafe-db
+          property: database
+      - key: PGUSER
         fromDatabase:
           name: cafe-db
           property: user
-      - key: DB_PASSWORD
+      - key: PGPASSWORD
         fromDatabase:
           name: cafe-db
           property: password
