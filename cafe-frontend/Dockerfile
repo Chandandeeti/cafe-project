@@ -20,8 +20,8 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Install serve to run the app
-RUN npm install -g serve
+# Install serve and curl
+RUN npm install -g serve && apk add --no-cache curl
 
 # Copy built files from builder
 COPY --from=builder /app/dist ./dist
@@ -33,8 +33,8 @@ EXPOSE 3000
 ENV NODE_ENV=production
 
 # Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
-    CMD wget --quiet --tries=1 --spider http://localhost:3000 || exit 1
+HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
+    CMD curl -f http://localhost:3000 || exit 1
 
 # Run application
 CMD ["serve", "-s", "dist", "-l", "3000"]

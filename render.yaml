@@ -19,8 +19,8 @@ services:
     region: oregon
     branch: main
     repo: https://github.com/YOUR_USERNAME/cafe-backend  # Replace with your repo
-    dockerfilePath: ./Dockerfile
-    dockerContext: ./cafe-backend
+    dockerfilePath: ./cafe-backend/Dockerfile
+    dockerContext: ./
     buildCommand: ""
     startCommand: ""
     ports:
@@ -55,8 +55,8 @@ services:
     region: oregon
     branch: main
     repo: https://github.com/YOUR_USERNAME/cafe-frontend  # Replace with your repo
-    dockerfilePath: ./Dockerfile
-    dockerContext: ./cafe-frontend
+    dockerfilePath: ./cafe-frontend/Dockerfile
+    dockerContext: ./
     buildCommand: ""
     startCommand: ""
     ports:
