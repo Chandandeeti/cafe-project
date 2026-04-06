@@ -1,0 +1,168 @@
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.admin-container h1 {
+  color: var(--primary-color);
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.tab-btn {
+  padding: 12px 20px;
+  border: none;
+  background-color: transparent;
+  color: #666;
+  cursor: pointer;
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+  margin-bottom: -2px;
+}
+
+.tab-btn:hover {
+  color: var(--primary-color);
+}
+
+.tab-btn.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+.admin-content {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.admin-form {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+.admin-form h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.admin-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.admin-form .btn {
+  margin-top: 0;
+  padding: 12px;
+}
+
+.admin-form button {
+  margin-top: 10px;
+}
+
+.admin-form button:first-of-type {
+  margin-top: 0;
+}
+
+.admin-list {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.admin-list h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.items-table-container {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.admin-table thead {
+  background-color: var(--light-bg);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.admin-table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.admin-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.admin-table tbody tr:hover {
+  background-color: var(--light-bg);
+}
+
+.admin-table .btn {
+  padding: 6px 10px;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.admin-table .btn-secondary {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.admin-table .btn-secondary:hover {
+  background-color: #138496;
+}
+
+@media (max-width: 992px) {
+  .admin-content {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-form {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-tabs {
+    flex-wrap: wrap;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .admin-table .btn {
+    padding: 4px 8px;
+    font-size: 11px;
+    margin-right: 3px;
+  }
+}

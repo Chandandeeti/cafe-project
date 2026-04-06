@@ -1,0 +1,67 @@
+services:
+  # PostgreSQL Database
+  - type: pserv
+    name: cafe-db
+    runtime: postgres
+    ipAddress: 10.5.0.3
+    region: oregon
+    plan: starter
+    version: 15
+    databaseName: cafe_db
+    user: postgres
+    preDeployCommand: ""
+
+  # Backend Service
+  - type: webservice
+    name: cafe-backend
+    runtime: docker
+    plan: starter
+    region: oregon
+    branch: main
+    repo: https://github.com/YOUR_USERNAME/cafe-backend  # Replace with your repo
+    dockerfilePath: ./Dockerfile
+    dockerContext: ./cafe-backend
+    buildCommand: ""
+    startCommand: ""
+    ports:
+      - container: 8080
+        protocol: http
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: cafe-db
+          property: connectionString
+      - key: DB_USER
+        fromDatabase:
+          name: cafe-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: cafe-db
+          property: password
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ALLOWED_ORIGINS
+        value: https://cafe-frontend.onrender.com
+
+  # Frontend Service
+  - type: webservice
+    name: cafe-frontend
+    runtime: docker
+    plan: starter
+    region: oregon
+    branch: main
+    repo: https://github.com/YOUR_USERNAME/cafe-frontend  # Replace with your repo
+    dockerfilePath: ./Dockerfile
+    dockerContext: ./cafe-frontend
+    buildCommand: ""
+    startCommand: ""
+    ports:
+      - container: 3000
+        protocol: http
+    envVars:
+      - key: VITE_API_URL
+        value: https://cafe-backend.onrender.com/api
