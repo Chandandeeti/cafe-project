@@ -5,11 +5,10 @@ target/
 *.war
 *.ear
 *.nar
-/target
-/.classpath
-/.project
-/.settings/
 *.log
+.classpath
+.project
+.settings/
 
 # Node.js/npm
 node_modules/
@@ -21,22 +20,15 @@ build/
 # IDEs
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
-.DS_Store
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# IntelliJ
 *.iml
 *.iws
 *.ipr
-out/
+*.swp
+*.swo
+*~
+.c9/
+*.launch
+*.sublime-workspace
 
 # Environment files
 .env
@@ -58,11 +50,9 @@ ehthumbs.db
 # Temporary files
 *.tmp
 *.bak
-*.swp
 
 # Gradle
 .gradle/
-build/
 
 # Maven wrapper
 .mvn/wrapper/maven-wrapper.jar
